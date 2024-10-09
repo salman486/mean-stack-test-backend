@@ -1,6 +1,9 @@
 import { Response, Router } from 'express';
 import passport from 'passport';
 import { config } from '@/config';
+import { requireUserMiddlware } from '@/middlewares/require-user';
+import { disconnectAccount } from '@/controllers/disconnectAccount';
+import { logger } from '@/logging';
 
 export const authRoutes = () => {
   const authRoutes = Router();
@@ -18,8 +21,11 @@ export const authRoutes = () => {
     }
   );
 
-  authRoutes.get('/error', (_, res: Response) => {
-    res.redirect(`${config.siteUrl}/account-link-error`);
+  authRoutes.delete('/disconnect', requireUserMiddlware, disconnectAccount);
+
+  authRoutes.get('/error', (req, res: Response) => {
+    logger.error({ session: req.session }, 'Error redirect');
+    res.redirect(`${config.siteUrl}/login-error`);
   });
 
   return authRoutes;

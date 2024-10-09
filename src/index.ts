@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { routes } from '@/routes';
@@ -10,6 +11,13 @@ const app = express();
 const port = config.port;
 
 bootstrap().then(() => {
+  app.use(
+    cors({
+      origin: 'http://localhost:4200',
+      credentials: true,
+    })
+  );
+
   app.use(cookieParser());
 
   initializePassport(app);

@@ -6,7 +6,7 @@ export interface UserDocument extends Document {
   name: string;
   externalId: string;
   provider: string;
-  email: string;
+  email?: string | null;
   rawData?: any;
 }
 
@@ -35,9 +35,9 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
     lowercase: true,
+    sparse: true,
   },
   rawData: {
     type: mongoose.Schema.Types.Mixed,

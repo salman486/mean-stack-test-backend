@@ -14,5 +14,5 @@ export async function getGithubUserEmail(accessToken: string) {
 
   const userEmails: ResType[] = await res.json();
 
-  return userEmails.find((list) => list.primary)?.email ?? null;
+  return userEmails?.find?.((list) => list.primary)?.email;
 }

@@ -9,7 +9,7 @@ export class UserService {
     email,
     externalId,
   }: {
-    email?: string;
+    email?: string | null;
     externalId?: string;
   }): Promise<UserDocument | null> {
     if (!email && !externalId) {

@@ -6,7 +6,7 @@ interface ExternalAccountOptions {
   name: string;
   provider: string;
   externalId: string;
-  email: string;
+  email?: string;
   rawData: Record<string, unknown>;
 }
 
