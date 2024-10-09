@@ -4,6 +4,7 @@ import { routes } from "@/routes";
 import { initializePassport } from "./middlewares/initialize-passport";
 import { bootstrap } from "./bootstrap";
 import { config } from "./config";
+import { logger } from "./logging";
 
 const app = express();
 const port = config.port;
@@ -16,6 +17,6 @@ bootstrap().then(() => {
   routes(app);
 
   app.listen(port, () => {
-    console.log(`Server is running at port ${port}`);
+    logger.info(`Server is running at port ${port}`);
   });
 });

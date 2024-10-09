@@ -4,6 +4,8 @@ import { CookieOptions } from "express-session";
 dotenv.config();
 
 export const config = {
+  env: process.env.NODE_ENV,
+  loggerLevel: process.env.LOG_LEVEL || "info",
   port: process.env.SERVER_PORT || 3000,
   apiUrl: process.env.API_URL,
   siteUrl: process.env.SITE_URL || "/",

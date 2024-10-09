@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { config } from "@/config";
+import { logger } from "@/logging";
 
 const initMongoDB = async () => {
   if (!config.databases.auth.url) {
@@ -12,11 +13,11 @@ const initMongoDB = async () => {
     dbName: config.databases.auth.name,
   });
 
-  console.log("database connection established");
+  logger.info(`database connection established`);
 };
 
 export const bootstrap = async () => {
-  console.log("bootstraping...");
+  logger.info(`Bootstraping application...`);
 
   await initMongoDB();
 };

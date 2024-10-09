@@ -23,6 +23,7 @@ cd mean-stack-test-backend
 
 # .env file
 
+NODE_ENV=development
 SERVER_PORT=3000
 GITHUB_CLIENT_ID=<client-id-here>
 GITHUB_CLIENT_SECRET=<client-secret-here>
