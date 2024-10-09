@@ -1,19 +1,14 @@
-import { logger } from "@/logging";
-import { NextFunction, Request, Response } from "express";
-import { HttpError } from "restify-errors";
+import { logger } from '@/logging';
+import { Request, Response } from 'express';
+import { HttpError } from 'restify-errors';
 
-export function errorHandler(
-  err: HttpError,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-) {
+export function errorHandler(err: HttpError, _req: Request, res: Response) {
   const statusCode = err.statusCode || 500;
   const errorMessage =
     statusCode === 500
-      ? "Internal Server Error"
-      : err.message || "Internal Server Error";
-  const errorName = err.name || "Error";
+      ? 'Internal Server Error'
+      : err.message || 'Internal Server Error';
+  const errorName = err.name || 'Error';
 
   const errorResponse: Record<string, any> = {
     statusCode,
@@ -21,12 +16,12 @@ export function errorHandler(
     error: errorName,
   };
 
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     errorResponse.stack = err.stack;
   }
 
   if (statusCode === 500) {
-    logger.error(err, "Internal Server Error");
+    logger.error(err, 'Internal Server Error');
   }
 
   res.status(statusCode).json(errorResponse);

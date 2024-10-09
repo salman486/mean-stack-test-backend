@@ -1,13 +1,13 @@
-import { Request } from "express";
-import { UserService } from "@/services/userService";
-import { createUserData } from "@/views/createUserData";
+import { Request } from 'express';
+import { UserService } from '@/services/userService';
+import { createUserData } from '@/views/createUserData';
 
 interface ExternalAccountOptions {
   name: string;
   provider: string;
   externalId: string;
   email: string;
-  rawData: any;
+  rawData: Record<string, unknown>;
 }
 
 export const providerSignin = async (

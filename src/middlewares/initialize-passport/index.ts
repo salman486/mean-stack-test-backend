@@ -1,10 +1,10 @@
-import "./providers";
+import './providers';
 
-import { Express } from "express";
-import passport from "passport";
-import session from "express-session";
-import { RequestHandler } from "express";
-import { config } from "@/config";
+import { Express } from 'express';
+import passport from 'passport';
+import session from 'express-session';
+import { RequestHandler } from 'express';
+import { config } from '@/config';
 
 let passportMiddleware: RequestHandler[];
 
@@ -12,7 +12,7 @@ export function initializePassport(app: Express) {
   if (!passportMiddleware) {
     passportMiddleware = [
       session({
-        name: "token",
+        name: 'token',
         secret: config.session.secret,
         resave: false,
         saveUninitialized: false,

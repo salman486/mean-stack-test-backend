@@ -5,9 +5,9 @@ interface ResType {
 }
 
 export async function getGithubUserEmail(accessToken: string) {
-  const res = await fetch("https://api.github.com/user/emails", {
+  const res = await fetch('https://api.github.com/user/emails', {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       authorization: `Bearer ${accessToken}`,
     },
   });

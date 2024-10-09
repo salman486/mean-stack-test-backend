@@ -1,5 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { v4 as uuidv4 } from "uuid";
+import mongoose, { Schema, Document } from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface UserDocument extends Document {
   userId: string;
@@ -45,6 +45,6 @@ const userSchema = new Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 export default User;

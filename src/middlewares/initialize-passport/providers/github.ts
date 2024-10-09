@@ -1,11 +1,11 @@
-import { config } from "@/config";
-import { providerSignin } from "@/controllers/providerSignin";
-import { getGithubUserEmail } from "@/helpers/getGithubUserEmail";
-import { Request } from "express";
-import passport from "passport";
-import { BadRequestError } from "restify-errors";
+import { config } from '@/config';
+import { providerSignin } from '@/controllers/providerSignin';
+import { getGithubUserEmail } from '@/helpers/getGithubUserEmail';
+import { Request } from 'express';
+import passport from 'passport';
+import { BadRequestError } from 'restify-errors';
 
-const GitHubStrategy = require("passport-github2").Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 
 passport.use(
   new GitHubStrategy(
@@ -15,7 +15,7 @@ passport.use(
       callbackURL: `${config.apiUrl}/api/v1/auth/github/callback`,
       passReqToCallback: true,
       state: true,
-      scopes: ["user:email"],
+      scopes: ['user:email'],
     },
     async function (
       req: Request,
@@ -28,7 +28,7 @@ passport.use(
 
       if (!email) {
         throw new BadRequestError(
-          "Failed to retrieve user email, please make sure you social media provider has associated email address"
+          'Failed to retrieve user email, please make sure you social media provider has associated email address'
         );
       }
 
@@ -36,7 +36,7 @@ passport.use(
         req,
         {
           name: profile.username,
-          provider: "github",
+          provider: 'github',
           externalId: profile.id,
           email,
           rawData: profile._json,

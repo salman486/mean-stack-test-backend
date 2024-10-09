@@ -1,4 +1,4 @@
-import User, { UserDocument } from "@/models/user";
+import User, { UserDocument } from '@/models/user';
 
 export class UserService {
   async create(user: Partial<UserDocument>): Promise<UserDocument> {
@@ -14,7 +14,7 @@ export class UserService {
   }): Promise<UserDocument | null> {
     if (!email && !externalId) {
       throw new Error(
-        "Either email or externalId must be provided to get user"
+        'Either email or externalId must be provided to get user'
       );
     }
 

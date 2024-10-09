@@ -1,5 +1,5 @@
-import Logger from "bunyan";
-import { config } from "./config";
+import Logger from 'bunyan';
+import { config } from './config';
 
 let varLogger: Logger;
 
@@ -12,11 +12,11 @@ function initializeLogger(): Logger {
   ];
 
   varLogger = Logger.createLogger({
-    name: "mean-stack-auth",
+    name: 'mean-stack-auth',
     streams,
     // Enabling src tracking is very slow and should not be used in production.
     // More info: https://www.npmjs.com/package/bunyan#src
-    src: config.env !== "production",
+    src: config.env !== 'production',
   });
 
   return varLogger;

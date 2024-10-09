@@ -1,7 +1,7 @@
-import { UserDocument } from "@/models/user";
+import { UserDocument } from '@/models/user';
 
-declare global {
-  namespace Express {
-    interface User extends UserDocument {}
+declare module 'express' {
+  interface Request {
+    user?: UserDocument;
   }
 }
