@@ -23,20 +23,20 @@ cd mean-stack-test-backend
 
 # .env file
 
-NODE_ENV=development
-SERVER_PORT=3000
-GITHUB_CLIENT_ID=<client-id-here>
-GITHUB_CLIENT_SECRET=<client-secret-here>
-SESSION_SECRET=nope
-API_URL=http://localhost:3000
-SITE_URL=http://localhost:4200
-COOKIE_DOMAIN=localhost
-DB_NAME=auth
-MONGO_INITDB_ROOT_USERNAME=auth
-MONGO_INITDB_ROOT_PASSWORD=123456
+NODE_ENV=development  
+SERVER_PORT=3000  
+GITHUB_CLIENT_ID=client-id-here  
+GITHUB_CLIENT_SECRET=client-secret-here  
+SESSION_SECRET=nope  
+API_URL=http://localhost:3000  
+SITE_URL=http://localhost:4200  
+COOKIE_DOMAIN=localhost  
+DB_NAME=auth  
+MONGO_INITDB_ROOT_USERNAME=auth  
+MONGO_INITDB_ROOT_PASSWORD=123456  
 DB_CONNECTION_STRING=mongodb://auth:123456@mongodb:27017
 
-use below if running node app outside docker
+use below if running node app outside docker  
 DB_CONNECTION_STRING=mongodb://auth:123456@localhost:27017
 
 # Running the Application
