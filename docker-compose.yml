@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  auth-api:
+    image: node:20-alpine
+    container_name: auth-api
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    env_file: "./.env"
+    depends_on:
+      - mongodb
+    command: npm run dev
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: auth
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/mongodb-auth
+
+volumes:
+  mongodb-data:
