@@ -14,12 +14,12 @@ passport.use(
       callbackURL: `${config.apiUrl}/api/v1/auth/github/callback`,
       passReqToCallback: true,
       state: true,
-      scopes: ['user:email'],
+      scope: ['read:user', 'user:email', 'read:org', 'repo'],
     },
     async function (
       req: Request,
       accessToken: string,
-      _refreshToken: string,
+      refreshToken: string,
       profile: any,
       cb: any
     ) {
@@ -32,6 +32,8 @@ passport.use(
           provider: 'github',
           externalId: profile.id,
           email,
+          accessToken,
+          refreshToken,
           rawData: profile._json,
         },
         cb

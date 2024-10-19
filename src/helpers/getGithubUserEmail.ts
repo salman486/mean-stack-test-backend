@@ -1,3 +1,5 @@
+import { GITHUB_API_BASE_URL } from '@/constants';
+
 interface ResType {
   email: string;
   primary: boolean;
@@ -5,7 +7,7 @@ interface ResType {
 }
 
 export async function getGithubUserEmail(accessToken: string) {
-  const res = await fetch('https://api.github.com/user/emails', {
+  const res = await fetch(`${GITHUB_API_BASE_URL}/user/emails`, {
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${accessToken}`,

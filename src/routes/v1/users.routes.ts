@@ -5,7 +5,9 @@ import { requireUserMiddlware } from '@/middlewares/require-user';
 export const usersRoutes = () => {
   const userRoutes = Router();
 
-  userRoutes.get('/me', requireUserMiddlware, getUser);
+  userRoutes.use(requireUserMiddlware);
+
+  userRoutes.get('/me', getUser);
 
   return userRoutes;
 };

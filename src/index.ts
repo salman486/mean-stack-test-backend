@@ -1,3 +1,5 @@
+import '@/types/express';
+
 import cors from 'cors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -18,6 +20,7 @@ bootstrap().then(() => {
     })
   );
 
+  app.use(express.json());
   app.use(cookieParser());
 
   initializePassport(app);
